@@ -157,7 +157,7 @@ img {
 
 #home {
 
-    background-image: url("/Medias/hero_1.jpg");
+    background-image: url("Medias/hero_1.jpg");
     background-position: center;
     background-size: cover;
 }
