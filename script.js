@@ -15,11 +15,11 @@ const navLinks = document.querySelectorAll('.nav-item')
 const menuToggle = document.getElementById('navbarSupportedContent')
 const bsCollapse = new bootstrap.Collapse(menuToggle)
 
-navLinks.forEach((element, index) => {
+navLinks.forEach((element) => {
     element.addEventListener('click', () => {
         bsCollapse.toggle()
     })
-    console.log(index)
+ 
 });
 
 // Validation
@@ -29,23 +29,18 @@ const number = document.getElementById('number')
 const email = document.getElementById('email')
 const subject = document.getElementById('subject')
 const content = document.getElementById('content')
-function validateFormAAA(){
 
-    validateInputs();
 
-}
-
-const setError = (element, message) => {
+function setError(element, message){
     const formgroup = element.parentElement;
-    const errordisplay = formgroup.querySelector('.error')
+    const errorDisplay = formgroup.querySelector('.error')
 
-    errordisplay.innerText = message
+    errorDisplay.innerText = message
     formgroup.classList.add('error');
     formgroup.classList.remove('success');
 }
 
-const setSuccess = element => {
-
+function setSuccess(element){
     const formgroup = element.parentElement;
     const errorDisplay = formgroup.querySelector('.error');
 
@@ -55,32 +50,32 @@ const setSuccess = element => {
     formgroup.classList.remove('error');
 }
 
-const isValidEmail = email => {
+function isValidEmail(email){
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
-function submitForm(userName,number,email,subject,content) {
+function submitForm() {
     let gform = document.getElementById('gform');
     gform.querySelector("button#submit-btn-btn").click();
-    // console.log(form);
+    // console.log(gform);
 }
 
-const isValidNumber = number => {
+function isValidNumber(number){
     const re = /^[0-9]{10}$/;
     return re.test(String(number));
 }
 
-const validateInputs = () => {
+function validateInputs(){
     const usernameValue = username.value.trim();
     const numberValue = number.value.trim();
     const emailValue = email.value.trim();
     const subjectValue = subject.value.trim();
-    const contentValue= content.value.trim();
+
     var flag = 2;
 
     // Name
-    if (usernameValue === '') {
+    if (usernameValue == '') {
         setError(username, 'This field cannot be empty');
         flag = 1;
     } else if (usernameValue.length <= 2) {
@@ -91,7 +86,7 @@ const validateInputs = () => {
     }
 
     // Number
-    if (numberValue === '') {
+    if (numberValue == '') {
         setError(number, 'This field cannot be empty');
         flag = 1;
     } else if (numberValue.length !== 10) {
@@ -106,7 +101,7 @@ const validateInputs = () => {
     }
 
     // Email
-    if (emailValue === '') {
+    if (emailValue == '') {
         setError(email, 'This field cannot be empty');
         flag = 1;
     } else if (!isValidEmail(emailValue)) {
@@ -126,11 +121,11 @@ const validateInputs = () => {
     } else {
         setSuccess(subject);
     }
-    
-    setSuccess(content);
-  
-    if(flag==2){
-        submitForm(usernameValue,numberValue,emailValue,subjectValue,contentValue);
+
+
+
+    if (flag == 2) {
+        submitForm();
     }
 
 }
