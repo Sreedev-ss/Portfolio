@@ -1,3 +1,5 @@
+// onscroll 
+
 window.onscroll = function () {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
         document.getElementById('navbar').classList.add('scrolled');
@@ -7,9 +9,13 @@ window.onscroll = function () {
     }
 }
 
+//  scroll animation
+
 AOS.init({
     duration: 800,
 });
+
+// navbar collapse
 
 const navLinks = document.querySelectorAll('.nav-item')
 const menuToggle = document.getElementById('navbarSupportedContent')
@@ -50,6 +56,11 @@ function setSuccess(element){
     formgroup.classList.remove('error');
 }
 
+function isValidNumber(number){
+    const re = /^[0-9]{10}$/;
+    return re.test(String(number));
+}
+
 function isValidEmail(email){
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -59,11 +70,6 @@ function submitForm() {
     let gform = document.getElementById('gform');
     gform.querySelector("button#submit-btn-btn").click();
     // console.log(gform);
-}
-
-function isValidNumber(number){
-    const re = /^[0-9]{10}$/;
-    return re.test(String(number));
 }
 
 function validateInputs(){
